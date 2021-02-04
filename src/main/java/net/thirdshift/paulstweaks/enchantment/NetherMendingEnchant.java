@@ -18,6 +18,8 @@ public class NetherMendingEnchant extends Enchantment {
 
 	public static void netherMend(ItemStack item, int mendLevel){
 		switch (mendLevel){
+			case 0:
+				return;
 			case 1:
 				if(Math.random() > 0.25)
 					return;

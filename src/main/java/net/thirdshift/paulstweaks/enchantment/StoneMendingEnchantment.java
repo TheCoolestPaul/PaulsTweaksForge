@@ -17,6 +17,8 @@ public final class StoneMendingEnchantment extends Enchantment {
 
 	public static void stoneMend(ItemStack item, int mendLevel){
 		switch (mendLevel){
+			case 0:
+				return;
 			case 1:
 				if(Math.random() > 0.25)
 					return;
