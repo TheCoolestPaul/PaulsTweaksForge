@@ -22,7 +22,9 @@ public class PaulsTweaksMod {
 
 	public PaulsTweaksMod() {
 		MinecraftForge.EVENT_BUS.register(BlockBreakEvent.class);
+		LOGGER.debug("Registered into BlockBreakEvent");
 		ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		LOGGER.debug("Registered enchantments.");
 	}
 
 }
