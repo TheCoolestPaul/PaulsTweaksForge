@@ -1,14 +1,18 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://files.minecraftforge.net/maven' } // For ForgeGradle Plugin
+        maven { url = 'https://dist.creeper.host/Sponge/maven' } // For Sponge Mixin Plugin
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
@@ -16,16 +20,23 @@ version = minecraft_version+"-"+mod_version
 group = 'net.thirdshift.paulstweaks'
 archivesBaseName = 'paulstweaks'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Needed for eclipse
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 println("You are building PaulsTweaks "+version)
+
+mixin {
+    add sourceSets.main, "paulstweaks.refmap.json"
+}
 
 minecraft {
     mappings channel: 'snapshot', version: mappings_version
     runs {
         client {
             workingDirectory project.file('run')
+
+            arg "-mixin.config=mixins.paulstweaks.json"
+
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
@@ -52,6 +63,7 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
+
             args '--mod', 'paulstweaks', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
@@ -68,6 +80,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:'+minecraft_version+'-'+forge_version
+    compile "org.spongepowered:mixin:${mixinVersion}"
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -80,7 +93,8 @@ jar {
             "Implementation-Title": project.name,
             "Implementation-Version": version,
             "Implementation-Vendor" :"TheCoolestPaul",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "mixins.paulstweaks.json"
         ])
     }
 }

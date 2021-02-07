@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8.2",
+  "package": "net.thirdshift.paulstweaks.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "paulstweaks.refmap.json",
+  "mixins": [
+    "EnchantmentScreenMixin",
+    "sheep.EatGrassGoalMixin"
+  ],
+  "client": [
+    "EnchantmentScreenMixin",
+    "sheep.EatGrassGoalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
