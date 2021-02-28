@@ -5,7 +5,7 @@ logoFile="paulstweaks.png"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 [[mods]]
     modId="paulstweaks"
-    version="0.3.4"
+    version="${version}"
     displayName="Paul's Tweaks"
     #updateJSONURL="https://change.me.example.invalid/updates.json"
     #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
