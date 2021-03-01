@@ -1,7 +1,6 @@
 package net.thirdshift.paulstweaks;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
@@ -12,7 +11,6 @@ import net.thirdshift.paulstweaks.enchantment.CheapskateEnchant;
 import net.thirdshift.paulstweaks.enchantment.NetherMendingEnchant;
 import net.thirdshift.paulstweaks.enchantment.StoneMendingEnchantment;
 import net.thirdshift.paulstweaks.event.EventListener;
-import net.thirdshift.paulstweaks.item.NetherDustItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,14 +24,10 @@ public class PaulsTweaksMod {
 	public static RegistryObject<Enchantment> NETHER_MENDING = ENCHANTMENTS.register("nether_mending", NetherMendingEnchant::new);
 	public static RegistryObject<Enchantment> CHEAPSKATE = ENCHANTMENTS.register("cheapskate", CheapskateEnchant::new);
 
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
-	public static RegistryObject<Item> NETHER_DUST = ITEMS.register("nether_dust", NetherDustItem::new);
-
 	public PaulsTweaksMod() {
 		MinecraftForge.EVENT_BUS.register(EventListener.class);
 		LOGGER.debug("Registered our own EventListener.");
 		ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 		LOGGER.debug("Registered enchantments.");
 	}
 

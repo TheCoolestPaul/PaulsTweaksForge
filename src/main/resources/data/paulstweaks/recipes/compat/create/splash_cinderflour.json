@@ -6,10 +6,9 @@
     }
   ],
   "type": "create:splashing",
-  "group": "minecraft:misc",
   "ingredients": [
     {
-      "item": "paulstweaks:nether_dust"
+      "item": "create:cinder_flour"
     }
   ],
   "results": [
