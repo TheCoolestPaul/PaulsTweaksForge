@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:crushing",
+  "group": "minecraft:misc",
+  "ingredients": [
+    {
+      "item": "minecraft:netherrack"
+    }
+  ],
+  "results": [
+    {
+      "item": "paulstweaks:nether_dust",
+      "count": "2"
+    },
+    {
+      "item": "paulstweaks:nether_dust",
+      "chance": 0.20
+    },
+    {
+      "item": "create:cinder_flour"
+    },
+    {
+      "item": "create:cinder_flour",
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 150
+}
