@@ -8,7 +8,6 @@
     "sheep.EatGrassGoalMixin"
   ],
   "client": [
-    "EnchantmentScreenMixin",
     "sheep.EatGrassGoalMixin"
   ],
   "injectors": {

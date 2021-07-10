@@ -13,15 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EatGrassGoal.class)
 public abstract class EatGrassGoalMixin extends Goal {
-
 	@Shadow @Final
-	private MobEntity grassEaterEntity;
+	private MobEntity mob;
 
-	@Inject(method = "shouldExecute", at = @At("HEAD"), cancellable = true)
-	public void shouldExecute(CallbackInfoReturnable<Boolean> info){
-		if (this.grassEaterEntity instanceof SheepEntity)
-			if ( !((SheepEntity)this.grassEaterEntity).getSheared() )
+	@Inject(method = "canUse", at = @At("HEAD"), cancellable = true)
+	public void canUse(CallbackInfoReturnable<Boolean> info){
+		if (this.mob instanceof SheepEntity)
+			if ( !((SheepEntity)this.mob).isSheared() )
 				info.setReturnValue(false);
 	}
-
 }

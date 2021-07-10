@@ -14,13 +14,13 @@ import static net.thirdshift.paulstweaks.PaulsTweaksMod.*;
 public class EventListener {
 	@SubscribeEvent
 	public static void onBlockBreak(BlockEvent.BreakEvent event){
-		if (event.getPlayer()!=null && event.getPlayer().getHeldItemMainhand().isEnchanted()){
-			int stoneLevel = EnchantmentHelper.getEnchantmentLevel(STONE_MENDING.get(), event.getPlayer().getHeldItemMainhand());
-			int netherLevel = EnchantmentHelper.getEnchantmentLevel(NETHER_MENDING.get(), event.getPlayer().getHeldItemMainhand());
-			if (event.getState().isIn(BlockTags.BASE_STONE_OVERWORLD) && stoneLevel > 0) {
-				StoneMendingEnchantment.stoneMend(event.getPlayer().getHeldItemMainhand(), stoneLevel);
-			} else if (event.getState().isIn(BlockTags.BASE_STONE_NETHER) && netherLevel > 0)
-				NetherMendingEnchant.netherMend(event.getPlayer().getHeldItemMainhand(), netherLevel);
+		if (event.getPlayer()!=null && event.getPlayer().getMainHandItem().isEnchanted()){
+			int stoneLevel = EnchantmentHelper.getItemEnchantmentLevel(STONE_MENDING.get(), event.getPlayer().getMainHandItem());
+			int netherLevel = EnchantmentHelper.getItemEnchantmentLevel(NETHER_MENDING.get(), event.getPlayer().getMainHandItem());
+			if (event.getState().is(BlockTags.BASE_STONE_OVERWORLD) && stoneLevel > 0) {
+				StoneMendingEnchantment.stoneMend(event.getPlayer().getMainHandItem(), stoneLevel);
+			} else if (event.getState().is(BlockTags.BASE_STONE_NETHER) && netherLevel > 0)
+				NetherMendingEnchant.netherMend(event.getPlayer().getMainHandItem(), netherLevel);
 		}
 	}
 
@@ -28,7 +28,7 @@ public class EventListener {
 	public static void onAnvilUpdate(AnvilUpdateEvent event){
 		ItemStack item = event.getLeft();
 		if (item.isEnchanted()) {
-			int level = EnchantmentHelper.getEnchantmentLevel(CHEAPSKATE.get(), item);
+			int level = EnchantmentHelper.getItemEnchantmentLevel(CHEAPSKATE.get(), item);
 			switch (level) {
 				case 1:
 					event.setCost((int) (event.getCost() - (event.getCost() * 0.25)));

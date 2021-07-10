@@ -29,6 +29,6 @@ public final class StoneMendingEnchantment extends Enchantment {
 				if (Math.random() > 0.75)
 					return;
 		}
-		item.setDamage(item.getDamage()-2);
+		item.setDamageValue(item.getDamageValue()-2);
 	}
 }
