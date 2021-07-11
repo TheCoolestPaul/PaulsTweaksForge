@@ -40,7 +40,7 @@ public class EventListener {
 					event.setCost((int) (event.getCost() - (event.getCost() * 0.75)));
 					event.setMaterialCost((int) (event.getMaterialCost() - (event.getMaterialCost() * 0.75)));
 				case 4:
-					event.setCost(0);
+					event.setCost(1);
 					event.setMaterialCost(1);
 			}
 		}

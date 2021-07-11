@@ -84,6 +84,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     minecraft ('net.minecraftforge:forge:'+minecraft_version+'-'+forge_version)
     implementation ("org.spongepowered:mixin:${mixinVersion}")
+    annotationProcessor ("org.spongepowered:mixin:$mixinVersion:processor")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -94,7 +95,7 @@ jar {
             "Specification-Vendor": "TheCoolestPaul",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
-            "Implementation-Version": version,
+            "Implementation-Version": archiveVersion,
             "Implementation-Vendor" :"TheCoolestPaul",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
             "MixinConfigs": "mixins.paulstweaks.json"
@@ -102,15 +103,3 @@ jar {
     }
 }
 jar.finalizedBy('reobfJar')
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
