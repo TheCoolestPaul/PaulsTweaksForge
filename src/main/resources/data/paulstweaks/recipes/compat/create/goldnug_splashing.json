@@ -18,13 +18,13 @@
     },
     {
       "item": "minecraft:quartz",
-      "count": 4,
+      "count": 2,
       "chance": 0.20
     },
     {
       "item": "minecraft:gold_nugget",
       "count": 4,
-      "chance": 0.125
+      "chance": 0.15
     }
   ]
 }

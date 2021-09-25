@@ -14,7 +14,6 @@ logoFile="paulstweaks.png"
     description='''
     Some stuff I use for my modpacks with the boys
     '''
-
 [[dependencies.paulstweaks]]
     modId="forge"
     mandatory=true

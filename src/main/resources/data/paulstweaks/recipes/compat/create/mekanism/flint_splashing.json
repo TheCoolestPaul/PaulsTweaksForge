@@ -1,0 +1,35 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "tag": "forge:gravel"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:flint",
+      "count": 1,
+      "chance": 0.25
+    },
+    {
+      "item": "minecraft:iron_nugget",
+      "count": 4,
+      "chance": 0.20
+    },
+    {
+      "item": "mekanism:nugget_osmium",
+      "count": 4,
+      "chance": 0.15
+    }
+  ]
+}

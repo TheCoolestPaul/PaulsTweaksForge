@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:netherrack"
+    }
+  ],
+  "results": [
+    {
+      "item": "create:cinder_flour"
+    },
+    {
+      "item": "minecraft:glowstone_dust",
+      "count": 2,
+      "chance": 0.6
+    },
+    {
+      "item": "create:cinder_flour",
+      "chance": 0.5
+    }
+  ],
+  "processingTime": 150
+}
